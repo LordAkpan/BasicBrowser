@@ -1,5 +1,6 @@
 package com.example.browserfx;
 
+import com.example.browserfx.web.BrowserHistory;
 import com.example.browserfx.web.NavigationBar;
 import com.example.browserfx.web.WebOptionsMenu;
 import javafx.application.Application;
@@ -27,8 +28,9 @@ public class HelloApplication extends Application {
         String homePageUrl = "https://www.google.com";
 
         MenuButton options = new WebOptionsMenu(webView);
+        BrowserHistory historyComponent = new BrowserHistory(webView);
         NavigationBar navigationBar = new NavigationBar(webView, homePageUrl, true);
-        navigationBar.getChildren().add(options);
+        navigationBar.getChildren().addAll(options, historyComponent);
 
         VBox root = new VBox(navigationBar, webView);
         Scene scene = new Scene(root);
